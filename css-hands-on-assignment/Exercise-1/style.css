@@ -1,0 +1,100 @@
+/* Custom styles to match the design precisely */
+body {
+    font-family: Arial, sans-serif;
+    /* A common sans-serif font */
+    background-color: #2b2b2b;
+    /* Dark background as in the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Full viewport height */
+    margin: 0;
+    padding: 20px;
+    /* Padding around the content card */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+}
+
+.card-container {
+    position: relative;
+    /* Needed for positioning the heading */
+    background-color: #ffffff;
+    /* White background for the main card */
+    border-radius: 15px;
+    /* Rounded corners for the card */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    /* Shadow effect */
+    width: 100%;
+    max-width: 500px;
+    /* Max width for desktop view */
+    padding: 0 25px 25px 25px;
+    /* Padding for content, top padding handled by heading */
+    text-align: left;
+    margin-top: 50px;
+    /* Space for the heading to peek out */
+}
+
+.heading-section {
+    background-color: #ff007f;
+    /* Pink/magenta color for the heading */
+    color: #000000;
+    /* White text for the heading */
+    font-size: 1.8em;
+    /* Bold font for the heading */
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 30px;
+    /* Padding inside the heading */
+    border-radius: 5px;
+    /* Rounded corners for the heading */
+    position: absolute;
+    /* Position relative to .card-container */
+    top: -30px;
+    /* Negative top margin to make it peek out */
+    left: 50%;
+    /* Center the heading horizontally */
+    transform: translateX(-50%);
+    /* Adjust for true centering */
+    white-space: nowrap;
+    /* Prevent text wrapping if possible */
+    z-index: 10;
+    /* Ensure heading is above card content */
+}
+
+.essay-content {
+    padding-top:60px;
+    /* Space between the heading and the essay text */
+    color: #333333;
+    /* Dark gray text for readability */
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .card-container {
+        border-radius: 10px;
+        padding: 0 15px 15px 15px;
+        /* Adjust padding for smaller screens */
+        margin-top: 40px;
+        /* Adjust top margin for heading peek out */
+    }
+
+    .heading-section {
+        font-size: 1.5em;
+        padding: 12px 25px;
+        border-radius: 8px;
+        top: -25px;
+        /* Adjust negative top margin */
+    }
+
+    .essay-content {
+        font-size: 1em;
+        padding-top: 20px;
+    }
+}

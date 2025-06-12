@@ -1,0 +1,179 @@
+/* Custom styles to fine-tune the design beyond Tailwind's defaults */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Using Inter font as per general instructions */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensure body takes full viewport height */
+    background-color: #ffffff;
+    /* White background for the top section */
+    color: #1a1a1a;
+    /* Dark text color for readability */
+}
+
+/* Top section styling */
+.top-section {
+    padding: 4rem 1.5rem;
+    /* Consistent padding top/bottom and sides */
+    max-width: 900px;
+    /* Limit width for desktop */
+    margin-left: auto;
+    /* Center content */
+    margin-right: auto;
+    /* Center content */
+    text-align: left;
+    /* Align text to the left */
+}
+
+.top-section h1 {
+    font-size: 3rem;
+    /* Large heading for desktop */
+    font-weight: 700;
+    /* Bold */
+    margin-bottom: 1.5rem;
+    /* Space below heading */
+}
+
+.top-section p {
+    font-size: 1.3rem;
+    /* Larger text for paragraphs */
+    line-height: 1.6;
+    /* Good line height for readability */
+    margin-bottom: 1rem;
+    /* Space between paragraphs */
+}
+
+.top-section .highlight-text {
+    color: #00cc66;
+    /* Specific green color for highlighted words */
+    font-weight: 600;
+    /* Slightly bolder highlight */
+}
+
+/* Bottom section styling */
+.bottom-section {
+    background-color: #696969;
+    /* Grey background as in the image */
+    flex-grow: 1;
+    /* Make it take up remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align card to the top within its section */
+    padding: 4rem 1.5rem;
+    /* Consistent padding top/bottom and sides */
+    box-sizing: border-box;
+    /* Include padding in total width/height */
+}
+
+.card-container {
+    background-color: #ffffff;
+    /* White background for the card */
+    /* border-radius: 0.75rem; */
+    /* Rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Soft shadow */
+    max-width: 700px;
+    /* Max width for the card on desktop */
+    width: 100%;
+    /* Full width on smaller screens */
+    padding-bottom: 2rem;
+    /* Padding at the bottom of the card */
+    overflow: hidden;
+    /* To contain the absolute positioned banner */
+}
+
+.heading-banner {
+    background-color: #ffc107;
+    /* Yellow/orange for the banner */
+    color: #1a1a1a;
+    /* Dark text on banner */
+    font-size: 1.6rem;
+    /* Large font for banner heading */
+    font-weight: 700;
+    /* Bold banner text */
+    padding: 1.5rem 2rem;
+    /* Padding inside the banner */
+    margin-bottom: 2rem;
+    /* Space between banner and text content */
+    border-radius: 0 0 0 0;
+    /* Rounded top corners, sharp bottom */
+    text-align: left;
+    /* Align banner text left */
+    margin-top: 30px;
+
+    margin-right: 50px;
+}
+
+.card-content {
+    padding: 0 2rem;
+    /* Horizontal padding for text content */
+    font-size: 1.1rem;
+    /* Standard paragraph text size */
+    line-height: 1.7;
+    /* Good line height */
+}
+
+.card-content p {
+    margin-bottom: 1rem;
+    /* Space between paragraphs in the card */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+
+    /* Medium screens (tablets) */
+    .top-section h1 {
+        font-size: 3.5rem;
+    }
+
+    .top-section p {
+        font-size: 1.4rem;
+    }
+
+    .heading-banner {
+        font-size: 1.8rem;
+    }
+
+    .card-content {
+        font-size: 1.15rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* Large screens (desktops) */
+    .top-section {
+        padding: 6rem 2rem;
+    }
+
+    .top-section h1 {
+        font-size: 4rem;
+        /* Even larger heading for desktop */
+    }
+
+    .top-section p {
+        font-size: 1.5rem;
+    }
+
+    .bottom-section {
+        padding: 6rem 2rem;
+    }
+
+    .card-container {
+        border-radius: 0rem;
+        /* Slightly more rounded corners for larger screens */
+    }
+
+    .heading-banner {
+        font-size: 2rem;
+        padding: 2rem 2.5rem;
+    }
+
+    .card-content {
+        padding: 0 2.5rem;
+        font-size: 1.2rem;
+    }
+}

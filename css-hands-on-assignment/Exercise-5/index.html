@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WP Pusher Checkout</title>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <!-- Tailwind CSS CDN for styling and responsive utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <!-- Placeholder for logo image, as it's part of the design -->
+            <img src="./assets/logo.png" alt="WP Pusher Logo" onerror="this.onerror=null; this.src='https://placehold.co/24x24/FFFFFF/333333?text=Logo';">
+        </div>
+        <nav class="nav-links">
+            <a href="#">Download</a>
+            <a href="#">Learn more</a>
+            <a href="#">Pricing</a>
+            <a href="#">Help</a>
+        </nav>
+        <a href="#" class="account-button">Account</a>
+    </header>
+
+    <main class="main-content">
+        <div class="checkout-container">
+            <div class="form-section">
+                <h2>Checkout</h2>
+
+                <!-- Basic Information Section -->
+                <div class="form-step">
+                    <div class="form-step-header">
+                        <span class="step-number">1</span>
+                        <h3>Your Basic Information</h3>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" value="Jane">
+                        </div>
+                        <div class="form-field">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" value="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field w-full">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" value="janedoe@example.com">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Information Section -->
+                <div class="form-step">
+                    <div class="form-step-header">
+                        <span class="step-number">2</span>
+                        <h3>Your Payment Information</h3>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field w-full">
+                            <label for="cardNumber">Credit Card</label>
+                            <input type="text" id="cardNumber" placeholder="Card Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <input type="text" placeholder="MM / YY">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" placeholder="CVC">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="buy-button">Buy WP Pusher</button>
+
+                <div class="help-section">
+                    <span class="info-icon">&#x2753;</span> <!-- Unicode for question mark in a box -->
+                    Need any help? Don't hesitate to <a href="#">contact support!</a>
+                </div>
+
+                <div class="powered-by-stripe">
+                    <img src="https://placehold.co/100x20/F8F8F8/888888?text=Powered+by+Stripe" alt="Powered by Stripe" onerror="this.onerror=null; this.src='https://placehold.co/100x20/F8F8F8/888888?text=Stripe';">
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h3>Freelancer</h3>
+                <div class="price">$99<span>/ year</span></div>
+                <p class="renew-info">Automatically renews after 1 year</p>
+
+                <ul class="feature-list">
+                    <li><span class="check-icon">&#x2713;</span> Use on <strong>&MediumSpace; 5 &MediumSpace;</strong> client sites</li>
+                    <li><span class="check-icon">&#x2713;</span> Private repositories</li>
+                    <li><span class="check-icon">&#x2713;</span> Email support</li>
+                </ul>
+
+                <p class="plan-switch">Need <strong>20</strong> client sites?<br><a href="#">Switch to the Agency plan</a></p>
+
+                <div class="testimonial">
+                    <p>FTP is horrible to deal with. <strong>WP Pusher</strong> solves that issue, and the customer support is awesome!</p>
+                    <div class="person_fit">
+                        <img class="person_image" src="./assets/person.png" alt="WP Pusher person">
+                        <span class="author">Kirk Beard</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2018 WP Pusher IVS &ndash; <a href="#">Terms of Service</a>
+    </footer>
+
+</body>
+</html>

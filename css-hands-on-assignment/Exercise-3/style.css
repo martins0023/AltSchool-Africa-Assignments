@@ -1,0 +1,185 @@
+/* Custom styles to fine-tune the design beyond Tailwind's defaults */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Using Inter font */
+    background-color: #CCCCFF;
+    /* Light purple background from the design */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Full viewport height */
+    margin: 0;
+    padding: 20px;
+    /* Padding around the card */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+}
+
+.product-card {
+    background-color: #ffffff;
+    /* White background for the card */
+    border-radius: 1rem;
+    /* Rounded corners for the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    /* Soft shadow */
+    max-width: 450px;
+    /* Max width for desktop */
+    width: 100%;
+    /* Full width on smaller screens */
+    overflow: hidden;
+    /* Ensures border-radius applies to children */
+    position: relative;
+    /* For positioning the "New and Improved!" badge */
+    padding-bottom: 1.5rem;
+    /* Space below content */
+}
+
+.badge {
+    background-color: #ffd90079;
+    /* Gold color for the badge */
+    color: #333333;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2.0rem;
+    position: absolute;
+    top: 1.25rem;
+    /* Distance from top */
+    left: -0.75rem;
+    /* Overlap to the left */
+    /* transform: rotate(-10deg); */
+    /* Slight rotation */
+    z-index: 10;
+    /* Ensure badge is on top of the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow for the badge */
+}
+
+.product-image-container {
+    /* width: 100%;
+    padding: 1.5rem; */
+    /* Padding around the image */
+    /* background-color: #F0F0F0; */
+    /* Light grey background for the image section */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem; */
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Remove extra space below image */
+    /* border-radius: 0.5rem; */
+    /* Slightly rounded corners for the image itself */
+}
+
+.product-details {
+    padding: 1.5rem 2rem 0 2rem;
+    /* Padding for text content */
+    text-align: left;
+}
+
+.product-title {
+    font-size: 1.8rem;
+    /* Large title font */
+    font-weight: 700;
+    /* Bold title */
+    color: #333333;
+    margin-bottom: 0.5rem;
+    /* Space below title */
+}
+
+.product-series {
+    font-size: 1rem;
+    color: #666666;
+    margin-left: 0.5rem;
+    font-weight: 400;
+    /* Regular weight for series */
+}
+
+.product-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    /* Tablet and smaller */
+    .product-card {
+        border-radius: 0.75rem;
+        padding-bottom: 1rem;
+    }
+
+    .badge {
+        top: 1rem;
+        left: -0.5rem;
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .product-image-container {
+        padding: 1rem;
+    }
+
+    .product-details {
+        padding: 1rem 1.5rem 0 1.5rem;
+    }
+
+    .product-title {
+        font-size: 1.6rem;
+    }
+
+    .product-series {
+        font-size: 0.9rem;
+    }
+
+    .product-description {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Mobile specific adjustments */
+    body {
+        padding: 15px;
+    }
+
+    .product-card {
+        border-radius: 0.5rem;
+    }
+
+    .badge {
+        top: 0.75rem;
+        left: -0.4rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .product-image-container {
+        padding: 0.75rem;
+    }
+
+    .product-details {
+        padding: 0.75rem 1rem 0 1rem;
+    }
+
+    .product-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .product-series {
+        font-size: 0.8rem;
+        margin-left: 0.4rem;    }
+
+    .product-description {
+        font-size: 0.85rem;
+    }
+}

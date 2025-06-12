@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Individual</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons for calendar and eye icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="left-section">
+            <img src="../Exercise-4/assets/Logo.png" alt="Logo" class="logo-gradient" onerror="this.onerror=null; this.src='https://placehold.co/400x250/F0F0F0/333333?text=Image+Not+Found';">
+            <h2>For Individuals</h2>
+            <p>Start benefiting from the wellness experience. For companies looking on increasing productivity, and improving organization wellness.</p>
+        </div>
+        <div class="right-section">
+            <form class="w-full">
+                <div class="form-group">
+                    <div class="form-field">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="Tolu">
+                    </div>
+                    <div class="form-field">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-field">
+                        <label for="gender">Gender</label>
+                        <select id="gender">
+                            <option value="">Select here</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field date-input">
+                        <label for="dob">Date of Birth</label>
+                        <input type="text" id="dob" placeholder="Select here" onfocus="(this.type='date')" onblur="(this.type='text')" />
+                        <i class="ph ph-calendar-blank calendar-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-field">
+                        <label for="weight">Weight (KG)</label>
+                        <input type="number" id="weight" placeholder="Enter Weight">
+                    </div>
+                    <div class="form-field">
+                        <label for="height">Height (CM)</label>
+                        <input type="number" id="height" placeholder="Enter height here...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-field">
+                        <label for="activityLevel">Activity Level</label>
+                        <select id="activityLevel">
+                            <option value="">Select here</option>
+                            <option value="sedentary">Sedentary</option>
+                            <option value="light">Lightly Active</option>
+                            <option value="moderate">Moderately Active</option>
+                            <option value="very">Very Active</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-field password-input">
+                        <label for="password">Password</label>
+                        <input type="password" id="password">
+                        <i class="ph ph-eye eye-icon" onclick="togglePasswordVisibility('password', this)"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-button">Register</button>
+
+                <p class="terms-text">
+                    By clicking Register, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePasswordVisibility(fieldId, iconElement) {
+            const passwordField = document.getElementById(fieldId);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                iconElement.classList.remove('ph-eye');
+                iconElement.classList.add('ph-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                iconElement.classList.remove('ph-eye-slash');
+                iconElement.classList.add('ph-eye');
+            }
+        }
+    </script>
+</body>
+</html>
