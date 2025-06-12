@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced URL Shortening Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for pixel-perfect adjustments and specific design elements */
+        body {
+            font-family: 'Inter', sans-serif; /* A clean sans-serif font */
+            margin: 0;
+            background-color: #F8F8F8; /* Overall light background */
+            color: #333333;
+        }
+
+        /* --- Header --- */
+        .header {
+            background-color: #ffffff;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for header */
+            position: sticky; /* Make header stick on scroll */
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .header .logo img {
+            height: 28px; /* Adjust logo size */
+            margin-right: 8px;
+        }
+
+        .header .nav-links a {
+            margin-left: 1.5rem;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .header .nav-links a:hover {
+            color: #333;
+        }
+
+        .header .account-button {
+            background-color: #4A90E2; /* Blue button */
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .header .account-button:hover {
+            background-color: #357ABD;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background: linear-gradient(to right, #E0EFFF, #D0E0FF); /* Light blue gradient */
+            padding: 5rem 1.5rem 0; /* Adjusted padding to match image */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden; /* For wave background */
+        }
+
+        .hero-section h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .hero-section h1 .highlight-text {
+            color: #4A90E2; /* Blue highlight */
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 4rem; /* Space before image */
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-input-group input {
+            flex-grow: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem 0 0 0.375rem;
+            outline: none;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .hero-input-group button {
+            background-color: #4A90E2;
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0.375rem 0.375rem 0;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .hero-input-group button:hover {
+            background-color: #357ABD;
+        }
+
+        .hero-image {
+            max-width: 90%;
+            height: auto;
+            position: relative; /* To be above the wave */
+            z-index: 10;
+        }
+
+        /* --- Stats Section --- */
+        .stats-section {
+            background-color: #ffffff;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .stats-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-item .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4A90E2; /* Blue */
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .label {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* --- Features Section --- */
+        .features-section {
+            background-color: #F8F8F8;
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-section {
+            background-color: #ffffff;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background-color: #ffffff;
+            padding: 2.5rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.highlighted {
+            background-color: #2D3E50; /* Dark blue background for highlighted card */
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(1.03); /* Slightly larger */
+        }
+
+        .pricing-card.highlighted h3,
+        .pricing-card.highlighted .price,
+        .pricing-card.highlighted .price span,
+        .pricing-card.highlighted .feature-list li {
+            color: #ffffff;
+        }
+
+        .pricing-card.highlighted .subscribe-button {
+            background-color: #4A90E2; /* Blue button for highlighted card */
+            color: #ffffff;
+        }
+        .pricing-card.highlighted .subscribe-button:hover {
+             background-color: #357ABD;
+        }
+
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .pricing-card .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .pricing-card .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .pricing-card .feature-list li .check-icon {
+            color: #20C997; /* Teal checkmark */
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .pricing-card .subscribe-button {
+            background-color: #E0E0E0; /* Light gray for non-highlighted */
+            color: #666;
+            padding: 0.8rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            width: 80%;
+            text-align: center;
+        }
+
+        .pricing-card .subscribe-button:hover {
+            background-color: #D0D0D0;
+        }
+
+        /* --- Call to Action / Demo Section --- */
+        .cta-section-top {
+            background: linear-gradient(to right, #4A90E2, #6AA9F0); /* Blue gradient */
+            padding: 4rem 1.5rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .cta-section-top h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section-top .cta-input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cta-section-top .cta-input-group input {
+            flex-grow: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem 0 0 0.375rem;
+            outline: none;
+            font-size: 1rem;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .cta-section-top .cta-input-group button {
+            background-color: #ffffff;
+            color: #4A90E2; /* Blue text */
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0.375rem 0.375rem 0;
+            font-weight: 600;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .cta-section-top .cta-input-group button:hover {
+            background-color: #f0f0f0;
+            color: #357ABD;
+        }
+
+
+        /* --- FAQs Section --- */
+        .faqs-section {
+            background-color: #ffffff;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .faqs-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 1.25rem 0;
+            cursor: pointer;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .faq-question .arrow-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item.active .faq-question .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 1rem;
+            display: none; /* Hidden by default */
+        }
+
+        .faq-item.active .faq-answer {
+            display: block; /* Show when active */
+        }
+
+        /* --- Footer CTA Section --- */
+        .cta-section-bottom {
+            background: linear-gradient(to right, #2D3E50, #4A5C70); /* Darker blue gradient */
+            padding: 4rem 1.5rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .cta-section-bottom h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section-bottom .main-button {
+            background-color: #4A90E2;
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            display: inline-block; /* Allows padding */
+        }
+
+        .cta-section-bottom .main-button:hover {
+            background-color: #357ABD;
+        }
+
+        /* --- Main Footer --- */
+        .footer-main {
+            background-color: #ffffff;
+            padding: 4rem 1.5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo-col {
+            flex-basis: 100%; /* Full width on mobile */
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo-col .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-col .logo img {
+            height: 28px;
+            margin-right: 8px;
+        }
+
+        .footer-logo-col .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-logo-col .social-links a {
+            font-size: 1.5rem; /* Icon size */
+            color: #666;
+            transition: color 0.2s ease;
+        }
+
+        .footer-logo-col .social-links a:hover {
+            color: #4A90E2;
+        }
+
+        .footer-nav-col {
+            flex: 1;
+            min-width: 150px; /* Minimum width for columns before wrapping */
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav-col h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-nav-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-nav-col ul li a {
+            font-size: 0.9rem;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav-col ul li a:hover {
+            color: #4A90E2;
+        }
+
+        .footer-bottom-text {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 2rem;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) { /* Tablet and smaller */
+            .header {
+                padding: 0.75rem 1rem;
+            }
+            .header .nav-links a {
+                margin-left: 1rem;
+            }
+            .header .account-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-section {
+                padding: 4rem 1rem 0;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .hero-input-group {
+                max-width: 400px;
+                margin-bottom: 3rem;
+            }
+
+            .stats-section {
+                padding: 3rem 1rem;
+            }
+            .stats-section h2 {
+                font-size: 1.6rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+            }
+
+            .features-section {
+                padding: 3rem 1rem;
+            }
+            .features-section h2 {
+                font-size: 1.6rem;
+            }
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .pricing-section {
+                padding: 3rem 1rem;
+            }
+            .pricing-section h2 {
+                font-size: 1.6rem;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .pricing-card {
+                padding: 2rem 1rem;
+            }
+
+            .cta-section-top {
+                padding: 3rem 1rem;
+            }
+            .cta-section-top h2 {
+                font-size: 1.8rem;
+            }
+            .cta-section-top .cta-input-group {
+                max-width: 400px;
+            }
+
+            .faqs-section {
+                padding: 3rem 1rem;
+            }
+            .faqs-section h2 {
+                font-size: 1.6rem;
+            }
+            .faq-item {
+                padding: 1rem 0;
+            }
+            .faq-question {
+                font-size: 1rem;
+            }
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+
+            .cta-section-bottom {
+                padding: 3rem 1rem;
+            }
+            .cta-section-bottom h2 {
+                font-size: 1.8rem;
+            }
+
+            .footer-main {
+                padding: 3rem 1rem 1.5rem;
+            }
+            .footer-nav-col {
+                min-width: 120px; /* Adjust min width for columns */
+                flex-basis: calc(50% - 1rem); /* Two columns on tablet */
+            }
+        }
+
+        @media (max-width: 768px) { /* Mobile */
+            .header {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem;
+            }
+            .header .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+            .header .nav-links a {
+                margin-left: 0;
+            }
+            .header .account-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-section {
+                padding: 3rem 0.75rem 0;
+            }
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+            .hero-section p {
+                font-size: 0.9rem;
+            }
+            .hero-input-group {
+                flex-direction: column; /* Stack input and button */
+                max-width: 300px;
+                margin-bottom: 2rem;
+            }
+            .hero-input-group input {
+                border-radius: 0.375rem; /* Full rounded corners */
+                width: 100%;
+                margin-bottom: 0.75rem;
+            }
+            .hero-input-group button {
+                border-radius: 0.375rem; /* Full rounded corners */
+                width: 100%;
+            }
+            .hero-image {
+                max-width: 100%; /* Ensure image fits */
+            }
+
+            .stats-section {
+                padding: 2rem 0.75rem;
+            }
+            .stats-section h2 {
+                font-size: 1.4rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+
+            .features-section {
+                padding: 2rem 0.75rem;
+            }
+            .features-section h2 {
+                font-size: 1.4rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+
+            .pricing-section {
+                padding: 2rem 0.75rem;
+            }
+            .pricing-section h2 {
+                font-size: 1.4rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+
+            .cta-section-top {
+                padding: 2rem 0.75rem;
+            }
+            .cta-section-top h2 {
+                font-size: 1.6rem;
+            }
+            .cta-section-top .cta-input-group {
+                flex-direction: column; /* Stack input and button */
+                max-width: 300px;
+            }
+            .cta-section-top .cta-input-group input {
+                border-radius: 0.375rem;
+                width: 100%;
+                margin-bottom: 0.75rem;
+            }
+            .cta-section-top .cta-input-group button {
+                border-radius: 0.375rem;
+                width: 100%;
+            }
+
+            .faqs-section {
+                padding: 2rem 0.75rem;
+            }
+            .faqs-section h2 {
+                font-size: 1.4rem;
+            }
+            .faq-item {
+                padding: 0.75rem 0;
+            }
+            .faq-question {
+                font-size: 0.95rem;
+            }
+            .faq-answer {
+                font-size: 0.85rem;
+            }
+
+            .cta-section-bottom {
+                padding: 2rem 0.75rem;
+            }
+            .cta-section-bottom h2 {
+                font-size: 1.6rem;
+            }
+            .cta-section-bottom .main-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .footer-main {
+                padding: 2rem 0.75rem 1rem;
+                flex-direction: column; /* Stack all footer columns */
+            }
+            .footer-logo-col {
+                text-align: center;
+                max-width: none;
+                margin-bottom: 1.5rem;
+            }
+            .footer-logo-col .logo {
+                justify-content: center;
+            }
+            .footer-logo-col .social-links {
+                justify-content: center;
+            }
+            .footer-nav-col {
+                min-width: unset;
+                width: 100%; /* Full width */
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            .footer-nav-col ul li {
+                display: inline-block;
+                margin: 0 0.5rem;
+            }
+            .footer-nav-col ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .footer-bottom-text {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="https://placehold.co/32x32/E0EFFF/4A90E2?text=LS" alt="Logo">
+            LinkSphere
+        </div>
+        <nav class="nav-links">
+            <a href="#">Download</a>
+            <a href="#">Learn more</a>
+            <a href="#">Pricing</a>
+            <a href="#">Help</a>
+        </nav>
+        <a href="#" class="account-button">Account</a>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Optimize Your Online Experience with Our <span class="highlight-text">Advanced URL Shortening Solution</span></h1>
+            <p>Transform long, unwieldy URLs into concise, trackable links that enhance your brand and boost your click-through rates.</p>
+            <div class="hero-input-group">
+                <input type="text" placeholder="Enter your long URL here">
+                <button>Shorten Now</button>
+            </div>
+            <img src="https://placehold.co/700x300/F0F0F0/333333?text=URL+Shortening+UI" alt="URL Shortening UI" class="hero-image">
+        </section>
+
+        <section class="stats-section">
+            <h2>One Stop, Four Possibilities</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="value">2M+</div>
+                    <div class="label">Total Links Created</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">60M+</div>
+                    <div class="label">Total Clicks Tracked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">1M+</div>
+                    <div class="label">Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">200+</div>
+                    <div class="label">Integrations</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Why choose S.W.O.?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>URL Shortening</h3>
+                    <p>Condense long URLs into short, memorable links, making them easier to share and more appealing to your audience. Maximize your online presence.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>QR Codes</h3>
+                    <p>Generate dynamic QR codes for your shortened URLs, bridging the gap between your physical and digital marketing efforts. Track scans effortlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Custom URLs</h3>
+                    <p>Create branded and personalized short links that reflect your unique identity, building trust and enhancing brand recognition.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Data Analytics</h3>
+                    <p>Gain insights into your link performance with detailed click analytics, geographic data, and referral sources to optimize your campaigns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section">
+            <h2>A price perfect for your needs.</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">Free<span>/ forever</span></div>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">&#x2713;</span> Unlimited links</li>
+                        <li><span class="check-icon">&#x2713;</span> Basic analytics</li>
+                        <li><span class="check-icon">&#x2713;</span> Standard QR codes</li>
+                    </ul>
+                    <a href="#" class="subscribe-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card highlighted">
+                    <h3>Pro</h3>
+                    <div class="price">$15<span>/ month</span></div>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">&#x2713;</span> All Basic features</li>
+                        <li><span class="check-icon">&#x2713;</span> Custom domains</li>
+                        <li><span class="check-icon">&#x2713;</span> A/B testing</li>
+                        <li><span class="check-icon">&#x2713;</span> Advanced analytics</li>
+                    </ul>
+                    <a href="#" class="subscribe-button">Subscribe Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$25<span>/ month</span></div>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">&#x2713;</span> All Pro features</li>
+                        <li><span class="check-icon">&#x2713;</span> Dedicated support</li>
+                        <li><span class="check-icon">&#x2713;</span> API access</li>
+                        <li><span class="check-icon">&#x2713;</span> Team management</li>
+                    </ul>
+                    <a href="#" class="subscribe-button">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section-top">
+            <h2>Get your free trial today!</h2>
+            <div class="cta-input-group">
+                <input type="email" placeholder="Your email address">
+                <button>Start Trial</button>
+            </div>
+        </section>
+
+        <section class="faqs-section">
+            <h2>FAQs</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is URL shortening?
+                        <span class="arrow-icon">&#x25BC;</span>
+                    </div>
+                    <div class="faq-answer">
+                        URL shortening is a technique in which a Uniform Resource Locator (URL) may be made substantially shorter and still direct to the required page. This is achieved by using a redirect on a domain name that is shorter than the original URL.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can custom URLs help my brand?
+                        <span class="arrow-icon">&#x25BC;</span>
+                    </div>
+                    <div class="faq-answer">
+                        Custom URLs, also known as branded links, use your own domain name instead of a generic one. This enhances brand recognition, builds trust with your audience, and improves click-through rates by making your links more professional and memorable.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is LinkSphere free to use?
+                        <span class="arrow-icon">&#x25BC;</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, LinkSphere offers a free "Basic" plan that includes unlimited links and basic analytics. For advanced features like custom domains and A/B testing, you can upgrade to our Pro or Enterprise plans.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer API access for developers?
+                        <span class="arrow-icon">&#x25BC;</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, API access is available with our Enterprise plan. This allows developers to integrate our URL shortening and tracking capabilities directly into their own applications and workflows.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section-bottom">
+            <h2>Revolutionizing Link Optimization</h2>
+            <a href="#" class="main-button">Learn More</a>
+        </section>
+    </main>
+
+    <footer class="footer-main">
+        <div class="footer-logo-col">
+            <div class="logo">
+                <img src="https://placehold.co/32x32/E0EFFF/4A90E2?text=LS" alt="Logo">
+                LinkSphere
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="https://placehold.co/24x24/FFFFFF/333333?text=F" alt="Facebook"></a>
+                <a href="#"><img src="https://placehold.co/24x24/FFFFFF/333333?text=T" alt="Twitter"></a>
+                <a href="#"><img src="https://placehold.co/24x24/FFFFFF/333333?text=L" alt="LinkedIn"></a>
+            </div>
+        </div>
+
+        <div class="footer-nav-col">
+            <h4>Solutions</h4>
+            <ul>
+                <li><a href="#">URL Shortening</a></li>
+                <li><a href="#">QR Codes</a></li>
+                <li><a href="#">Custom Links</a></li>
+                <li><a href="#">Analytics</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-nav-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-nav-col">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">API Docs</a></li>
+                <li><a href="#">Integrations</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <p class="footer-bottom-text">
+            &copy; 2023 LinkSphere. All rights reserved. Terms of Service | Privacy Policy
+        </p>
+    </footer>
+
+    <script>
+        // JavaScript for FAQ accordion functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Toggle 'active' class on click
+                item.classList.toggle('active');
+
+                // Get the answer element and toggle its display
+                const answer = item.querySelector('.faq-answer');
+                if (item.classList.contains('active')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
