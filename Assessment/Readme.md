@@ -108,9 +108,8 @@ Explore the complete UI/UX flow and component specifications on Figma:
 ```
 calculator-app/
 ├── index.html         # Main HTML page
-├── assets/
-│   └── styles.css     # Styles and layout
-│   └── calculator.js  # Core logic and event handling
+├── styles.css     # Styles and layout
+├── script.js  # Core logic and event handling
 └── README.md          # Project documentation
 ```
 
