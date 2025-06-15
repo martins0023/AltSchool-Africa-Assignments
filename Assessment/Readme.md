@@ -1,5 +1,3 @@
-Here’s a more comprehensive, structured README that you can drop into your project’s root directory:
-
 ---
 
 ## Calculator Web Application
@@ -137,4 +135,4 @@ This project is released under the [MIT License](LICENSE).
 
 ---
 
-> ✨ Built with passion as a hands‑on exercise in front‑end development, with a focus on clean code and user‑first design.
+> ✨ 
