@@ -61,7 +61,7 @@ A modern, responsive calculator built as part of the first‑semester practical 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your‑username/calculator‑app.git
+   git clone https://github.com/your‑username/AltSchool-Africa-Assignments/tree/main/Assessment/calculator‑app.git
    cd calculator‑app
    ```
 
@@ -108,9 +108,8 @@ Explore the complete UI/UX flow and component specifications on Figma:
 ```
 calculator-app/
 ├── index.html         # Main HTML page
-├── css/
+├── assets/
 │   └── styles.css     # Styles and layout
-├── js/
 │   └── calculator.js  # Core logic and event handling
 └── README.md          # Project documentation
 ```
